@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} Sistema Operativo {% endblock %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark teal darken-3 ">
+    <a class="navbar-brand" href="{{url_for('consultarEstadoMaquina')}}">Informacion De La Maquina Linux</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item"> 
+                <a class="nav-link" href="{{url_for('index')}}">Pagina Principal <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('consultarEstadoMaquina')}}">Estado De La Maquina</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('consultarEstadoDescargas')}}">Estado De La Descarga</a> 
+            </li>
+        </ul>
+    </div>
+</nav>
+                
+
+<div class="container" style="height: 100vh">
+    <div class="flex-center flex-column">
+        <label>Id_so: {{ maquina.id_so }}</label>
+        <label>Kernel: {{ maquina.kernel }}</label>
+        <label>Release: {{ maquina.release }}</label>
+        <label>Nodename: {{ maquina.nodename }}</label>
+        <label>Kernelv: {{ maquina.kernelv }}</label>
+        <label>Machine: {{ maquina.machine }}</label>
+        <label>Processor: {{ maquina.processor }}</label>
+        <label>So: {{ maquina.so }}</label>
+        <label>Hardware: {{ maquina.hardware }}</label>
+        <label>User_logged: {{ maquina.user_logged }}</label>
+        <label>Maquina: {{ maquina.cpu_us }}</label>
+        <label>Cpu_sy: {{ maquina.cpu_sy }}</label>
+        <label>Cpu_id: {{ maquina.cpu_id }}</label>
+        <label>Cpu_wa: {{ maquina.cpu_wa }}</label> 
+        <label>Cpu_st: {{ maquina.cpu_st }}</label>
+        <label>Mem_swpd: {{ maquina.mem_swpd }}</label>
+        <label>Mem_free: {{ maquina.mem_free }}</label>
+        <label>Mem_buff: {{ maquina.mem_buff }}</label>
+        <label>Cache: {{ maquina.cache }}</label>
+        <label>Swap_si: {{ maquina.swap_si }}</label>
+        <label>Swap_so: {{ maquina.swap_so }}</label> 
+    </div>
+</div>
+{% endblock %}

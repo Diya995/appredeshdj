@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %} Sistema Operativo {% endblock %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark teal darken-3 ">
+    <a class="navbar-brand" href="{{url_for('consultarEstadoDescargas')}}">Informacion De La Descarga</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('index')}}">Pagina Principal <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('consultarEstadoMaquina')}}">Estado De La Maquina</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('consultarEstadoDescargas')}}">Estado De La Descarga</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+                
+
+<div class="container" style="height: 100vh">
+    <div class="flex-center flex-column">
+        {% if mensaje: %}
+            <label>{{mensaje}}</label>
+        {% endif %}
+        <br>
+        <br> 
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>Magnet Link</th>
+                <th>Iniciada</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for descarga in descargas: %}  
+                    <tr> 
+                    	<th>{{descarga.id_dt}}</th>
+                        <td>{{descarga.magnet_link}}</td>
+                        <td>{{descarga.iniciada}}</td>
+                        <td>{{descarga.estado_descarga}}</td> 
+                    </tr>
+                {% endfor %}  
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <form action="{{url_for('ordenarDescarga')}}" method="POST">
+            <h2>Ordenar nueva descarga</h2>
+            <label>Magnet-Link</label>
+            <textarea name="magnet_link"></textarea>
+            <button type="submit" class="btn btn-default">Ordenar</button>  
+        </form> 
+    </div>
+</div>
+{% endblock %}
